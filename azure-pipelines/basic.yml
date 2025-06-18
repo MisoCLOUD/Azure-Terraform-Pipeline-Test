@@ -34,14 +34,14 @@ stages:
               backendAzureRmContainerName: $(backendContainer)
               backendAzureRmKey: $(backendKey)
               command: 'init'  # Initialize Terraform
-              workingDirectory: '$(Build.SourcesDirectory)/terraform'  # Set the working directory
+              workingDirectory: '.'  # Set the working directory
 
           # Validate Terraform configuration
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
               command: 'validate'  # Validate Terraform configuration
-              workingDirectory: '$(Build.SourcesDirectory)/terraform'
+              workingDirectory: '.'
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
