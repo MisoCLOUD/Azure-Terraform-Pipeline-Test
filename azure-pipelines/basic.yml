@@ -41,13 +41,13 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'  # Validate Terraform configuration
-              workingDirectory: '.'
+              workingDirectory: 'terraform'
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
               command: 'plan'  # Run terraform plan
               environmentServiceNameAzureRM: $(azureServiceConnection)  # Azure service connection for authentication
-              workingDirectory: 'Azure-Terraform-Pipeline-Test/terraform'  # Set the working directory
+              workingDirectory: 'terraform'  # Set the working directory
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
@@ -55,4 +55,4 @@ stages:
               backendServiceArm: $(azureServiceConnection)
               commandOptions: '--auto-approve'
               environmentServiceNameAzureRM: $(azureServiceConnection)  # Azure service connection for authentication
-              workingDirectory: '.'  # Set the working directory
+              workingDirectory: 'terraform'  # Set the working directory
