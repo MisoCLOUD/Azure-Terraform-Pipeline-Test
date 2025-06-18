@@ -45,14 +45,9 @@ stages:
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
-              command: 'plan'  # Run terraform plan
-              environmentServiceNameAzureRM: $(azureServiceConnection)  # Azure service connection for authentication
-              workingDirectory: '$(Build.SourcesDirectory)/terraform'  # Set the working directory
-          - task: TerraformTaskV4@4
-            inputs:
-              provider: 'azurerm'
               command: 'apply'  # Run terraform apply
               backendServiceArm: $(azureServiceConnection)
               commandOptions: '--auto-approve'
               environmentServiceNameAzureRM: $(azureServiceConnection)  # Azure service connection for authentication
-              workingDirectory: '$(Build.SourcesDirectory)/terraform'  # Set the working directory
+              workingDirectory: '.'  # Set the working directory
+
