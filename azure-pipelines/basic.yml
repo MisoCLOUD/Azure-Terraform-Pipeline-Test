@@ -47,7 +47,7 @@ stages:
               provider: 'azurerm'
               command: 'plan'  # Run terraform plan
               environmentServiceNameAzureRM: $(azureServiceConnection)  # Azure service connection for authentication
-              workingDirectory: '.'  # Set the working directory
+              workingDirectory: 'Azure-Terraform-Pipeline-Test/terraform'  # Set the working directory
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
