@@ -35,19 +35,10 @@ stages:
               backendAzureRmKey: $(backendKey)
               command: 'init'  # Initialize Terraform
               workingDirectory: '.'  # Set the working directory
-
           # Validate Terraform configuration
           - task: TerraformTaskV4@4
             inputs:
               provider: 'azurerm'
               command: 'validate'  # Validate Terraform configuration
               workingDirectory: '.'
-          - task: TerraformTaskV4@4
-            inputs:
-              provider: 'azurerm'
-              command: 'apply'  # Run terraform apply
-              backendServiceArm: $(azureServiceConnection)
-              commandOptions: '--auto-approve'
-              environmentServiceNameAzureRM: $(azureServiceConnection)  # Azure service connection for authentication
-              workingDirectory: '.'  # Set the working directory
 
